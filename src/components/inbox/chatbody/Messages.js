@@ -9,13 +9,11 @@ export default function Messages({ messages = [], totalCount }) {
   const { id } = useParams();
   const { user } = useSelector((state) => state.auth) || {};
   const { email } = user || {};
-  console.log("messages: ", messages);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const dispatch = useDispatch();
 
   const fetchMore = () => {
-    console.log("fetchMore: ", page + 1);
     setPage((prevPage) => prevPage + 1);
   };
   useEffect(() => {

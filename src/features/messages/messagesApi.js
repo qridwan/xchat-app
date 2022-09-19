@@ -38,7 +38,6 @@ export const messagesApi = apiSlice.injectEndpoints({
     }),
     getMoreMessages: builder.query({
       query: ({ id, page }) => {
-        console.log("id, page : ", id, page);
         return `/messages?conversationId=${id}&_sort=timestamp&_order=desc&_page=${page}&_limit=${process.env.REACT_APP_MESSAGES_PER_PAGE}`;
       },
       async onQueryStarted({ id }, { queryFulfilled, dispatch }) {
@@ -46,8 +45,6 @@ export const messagesApi = apiSlice.injectEndpoints({
           const messages = await queryFulfilled;
 
           if (messages?.data?.length > 0) {
-            // const receiverEmail = messages[0].receiver.email;
-            console.log("messages: ", messages.data, id);
             dispatch(
               apiSlice.util.updateQueryData("getMessages", id, (draft) => {
                 return {
