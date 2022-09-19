@@ -18,6 +18,7 @@ export default function ChatItems() {
     const { data, isLoading, isError, error } =
         useGetConversationsQuery(email) || {};
     const { data: conversations, totalCount } = data || {};
+    console.log('conversations: ', conversations);
     const [page, setPage] = useState(1);
     const [hasMore, setHasMore] = useState(true);
     const dispatch = useDispatch();
@@ -68,6 +69,7 @@ export default function ChatItems() {
                 dataLength={conversations.length}
                 next={fetchMore}
                 hasMore={hasMore}
+                
                 loader={<h4>Loading...</h4>}
                 height={window.innerHeight - 129}
             >
