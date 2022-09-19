@@ -9,7 +9,6 @@ import Register from "./pages/Register";
 
 function App() {
     const authChecked = useAuthCheck();
-
     return !authChecked ? (
         <div>Checking authentication....</div>
     ) : (
